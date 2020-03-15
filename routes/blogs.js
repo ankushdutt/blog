@@ -9,7 +9,15 @@ router.get("/blogs/new", function(req, res) {
 
 //POST
 router.post("/blogs", function(req, res) {
-    Blog.create(req.body.blog, function(err, newlyCreated){
+    var title = req.body.title
+    var image = req.body.image
+    var body = req.body.body
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newBlog = {title, image, body, author}
+    Blog.create(newBlog, function(err, newlyCreated){
             if(err){
                 console.log(err);
                 res.render("blogs/new")
