@@ -2,11 +2,11 @@
 <div class="modal" id="regmodal">
     <div class="modal-background"></div>
 	<!-- ----------------------------------------
-	SIGN UP FORM----------------
+	SIGN UP AND LOGIN FORM----------------
 	---------------------------------------- -->
-	<div class="modal-content">
+	<div class="modal-content" style="width: 30%;">
 		<form action="/register" method="POST">
-			<div class="box">
+			<div class="card" style="padding-top: 20px; border-radius: 10px;">
 				<div class="card-content">
 				<!-- --EDIT CODE FOR SIGN UP FORM HERE--- -->
 					<div class="field">
@@ -25,17 +25,15 @@
 				</div>
 				<footer class="card-footer">
 				<p class="card-footer-item">
-					<span>
-						<button class="button is-primary is-outlined">Sign Up</button>
-					</span>
+					<button class="button is-primary is-outlined" style="width: 100%;">Sign Up</button>
+				</p>
+				<p class="card-footer-item">
+					<button formaction="/login" class="button is-primary is-outlined" style="width: 100%;">Login</button>
 				</p>
 				</footer>
 			</div>
 		</form>
 	</div>
-	<!-- -----------------------------------
-
-	----------------------------------- -->
     <button class="modal-close is-large" aria-label="close"></button>
 </div>
 
@@ -52,19 +50,19 @@ HOMEPAGE COPIED FROM GITHUB-------------
 	<a class="nav-item" href="index.html">
 		<b>Home</b>
 	</a>
-	<a class="nav-item" href="/blogs/new">
-		<b>New Blog</b>
-	</a>
 	<%if(!currentUser){%>
-	<a class="nav-item" id="regbutton">
-		<b>Sign Up</b>
-	</a>
-	<a class="nav-item" id="loginbutton">
-		<b>Login</b>
-	</a>
+		<a class="nav-item" id="regbutton">
+			<b>Sign-Up/Login</b>
+		</a>
 	<%} else{%>
+		<a class="nav-item" href="/blogs/new">
+			<b>New Blog</b>
+		</a>
 		<a class="nav-item" href="/logout">
 			<b>Sign Out</b>
+		</a>
+		<a class="nav-item -end">
+			<b>Welcome </b>
 		</a>
 	<%}%>
 		</div>
