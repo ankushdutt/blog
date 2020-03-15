@@ -20,13 +20,28 @@ router.post("/register", function(req, res){
     console.log(newUser)
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-             return res.render("register")
+            console.log(err)
+            //  return res.render("register")
         }
         else{
             passport.authenticate("local")(req, res, function(){
-                res.redirect("/blogs")
+                res.redirect("/")
             })
         }
     })
 })
+
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: "/",
+        failureRedirect: "/"
+    }),function(req, res){
+})
+
+router.get("/logout", function(req, res){ 
+    req.logout()                     //just remember this...
+    // req.flash("success", "Logged you out!")
+    res.redirect("/")
+})
+
 module.exports = router

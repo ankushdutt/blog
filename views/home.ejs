@@ -2,7 +2,7 @@
 <div class="modal" id="regmodal">
     <div class="modal-background"></div>
 	<!-- ----------------------------------------
-	SIGN UP AND SIGN IN FORM----------------
+	SIGN UP FORM----------------
 	---------------------------------------- -->
 	<div class="modal-content">
 		<form action="/register" method="POST">
@@ -10,7 +10,7 @@
 				<div class="card-content">
 				<!-- --EDIT CODE FOR SIGN UP FORM HERE--- -->
 					<div class="field">
-						<label class="label">Email</label>
+						<label class="label">Username</label>
 						<div class="control">
 						<input class="input" type="text" name="username" placeholder="Username">
 						</div>
@@ -55,12 +55,18 @@ HOMEPAGE COPIED FROM GITHUB-------------
 	<a class="nav-item" href="/blogs/new">
 		<b>New Blog</b>
 	</a>
+	<%if(!currentUser){%>
 	<a class="nav-item" id="regbutton">
 		<b>Sign Up</b>
 	</a>
 	<a class="nav-item" id="loginbutton">
 		<b>Login</b>
 	</a>
+	<%} else{%>
+		<a class="nav-item" href="/logout">
+			<b>Sign Out</b>
+		</a>
+	<%}%>
 		</div>
 	</nav>
 	</div>
