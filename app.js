@@ -48,6 +48,6 @@ app.use(indexRoutes)
 app.use(blogRoutes)
 
 //-------------LISTEN ON PORT 5000--------------
-app.listen(process.env.PORT || 5000, function() {
-    console.log("server is running at http://localhost:5000")
+app.listen(process.env.PORT || 3000, function() {
+    console.log("server is running at http://localhost:3000")
 })

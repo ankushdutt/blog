@@ -1,0 +1,17 @@
+<%- include('../partials/header') %>
+<div class="main-content">
+	<div class="container">
+		<div class="columns is-centered is-multiline has-text-centered">
+			<div class="column is-8">
+                <h3 class="title is-3"><b><a href="/blog/<%= %>" class="has-text-dark"><%=blog.title%></a></b></h3>
+                <h4 class="title is-4 is-spaced"><%=blog.body%></h4>
+                <h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <em><%=blog.author.username%></em> on April 7th 2017 at 9:33pm</h6>
+                <hr/>
+			</div>
+		</div>
+	</div>
+</div>
+<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+    <center><button class="button is-danger is-outlined">Delete</button></center>
+</form>
+<%- include('../partials/footer') %>
