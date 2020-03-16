@@ -1,4 +1,49 @@
 <%- include('partials/header') %>
+<div class="header-wrapper">
+	<section class="hero-top">
+		<div class="header">
+		<!-- navigation links -->
+		<div class="header-nav">
+			<nav class="nav">
+			<div class="nav-center">
+				<a class="nav-item" href="/">
+				<b>Home</b>
+				</a>
+				<%if(!currentUser){%>
+				<a class="nav-item" id="regbutton">
+					<b>Sign-Up/Login</b>
+				</a>
+				<%} else{%>
+				<a class="nav-item" href="/blogs/new">
+					<b>New Blog</b>
+				</a>
+				<a class="nav-item" href="/logout">
+					<b>Sign Out</b>
+				</a>
+				<a class="nav-item -end">
+					<b>Welcome <%=currentUser.username%></b>
+				</a>
+				<%}%>
+			</div>
+			</nav>
+		</div>
+		<!-- end of navigation links -->
+		<!-- header titles -->
+		<div class="header-title">
+			<section class="hero is-medium has-text-centered">
+			<div class="hero-body">
+				<div class="container">
+				<h1 class="title is-1">Ankush Dutt</h1>
+				<h3 class="subtitle is-3">The Daily Awesome</h3>
+				</div>
+			</div>
+			</section>
+		</div>
+		<!-- end of header titles -->
+		</div>
+	</section>
+</div>
+
 <div class="main-content">
 	<div class="container">
 		<div class="columns is-centered is-multiline has-text-centered">
