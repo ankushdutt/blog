@@ -4,8 +4,8 @@
 	<div class="header">
 	<!-- navigation links -->
 	<div class="header-nav">
-		<nav class="nav">
-		<div class="nav-center">
+		<nav class="nav" style="padding-top: 13px;">
+			<center>
 			<a class="nav-item" href="/">
 			<b>Home</b>
 			</a>
@@ -14,17 +14,17 @@
 				<b>Sign-Up/Login</b>
 			</a>
 			<%} else{%>
-			<a class="nav-item" href="/blogs/new">
+			<a class="nav-item" href="/blog/new">
 				<b>New Blog</b>
 			</a>
 			<a class="nav-item" href="/logout">
 				<b>Sign Out</b>
 			</a>
-			<a class="nav-item -end">
+			<a class="nav-item">
 				<b>Welcome <%=currentUser.username%></b>
 			</a>
 			<%}%>
-		</div>
+			</center>
 		</nav>
 	</div>
 	<!-- end of navigation links -->
@@ -51,7 +51,7 @@
 		<div class="columns is-centered is-multiline has-text-centered">
 			<div class="column is-6">
 				<img src="<%=blog.image%>" alt="">
-				<p style="text-align:justify; padding-top: 20px;"><%=blog.body%></p>
+				<p style="text-align:justify; padding-top: 20px;"><%-blog.body%></p>
 			</div>
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 		<hr width="43%">
 		<span style="display: inline-flex;">
 			<form action="/blog/<%=blog._id%>/edit/">
-				<button class="button is-warning is-outlined" style="margin-right: 50px;">Edit</button>
+				<button class="button is-info is-outlined" style="margin-right: 50px;">Edit</button>
 			</form>
 			<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
 				<button class="button is-danger is-outlined">Delete</button>

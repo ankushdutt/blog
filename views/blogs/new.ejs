@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<center><h3 class="title is-3" style="padding: 50px;">CREATE A NEW BLOG</h3></center>
+<center><h3 class="title is-3" style="padding: 50px;">Creat a New Blog</h3></center>
 <form action="/blogs" method="POST" style="margin: auto; width: 40%;">
     <div class="field">
         <input class="input is-info" type="text" name="title" placeholder="Title" required>
@@ -8,7 +8,7 @@
       <input class="input is-info" type="text" name="image" placeholder="Image URL">
     </div>
     <div class="field">
-      <textarea class="textarea is-info" name="body" placeholder="Body"></textarea>
+      <textarea id="content" class="textarea is-info" name="body" rows="10" placeholder="Body (Markdown in Supported!)"></textarea>
     </div>
     <button class="button is-info is-outlined">Create</button>
 </form>

@@ -39,17 +39,6 @@ body{
 }
 
 /* navigation */
-.nav {
-    background-color: transparent;
-}
-
-.nav a {
-    color: whitesmoke;
-}
-
-a.nav-item:hover, a.nav-item:active, a.nav-item:link, a.nav-item:visited {
-    color: whitesmoke;
-}
 
 /* main content */
 .main-content {
@@ -118,6 +107,11 @@ a.nav-item:hover, a.nav-item:active, a.nav-item:link, a.nav-item:visited {
 /* -------------------------------------------------------------------- */
 .has-text-dark {
     color: hsl(0, 0%, 21%);
+}
+
+.nav-item {
+    padding: 10px;
+    color: white;
 }
 
 ::-webkit-scrollbar {

@@ -8,6 +8,7 @@ var express     = require("express")
     Blog        = require("./models/blog")
     Comment     = require("./models/comment")
     User        = require("./models/user")
+    marked      = require("marked")
 
 var indexRoutes = require("./routes/index")
 // var commentRoutes = require("./routes/comments")

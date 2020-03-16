@@ -4,8 +4,8 @@
 		<div class="header">
 		<!-- navigation links -->
 		<div class="header-nav">
-			<nav class="nav">
-			<div class="nav-center">
+			<nav class="nav" style="padding-top: 13px;">
+				<center>
 				<a class="nav-item" href="/">
 				<b>Home</b>
 				</a>
@@ -14,17 +14,17 @@
 					<b>Sign-Up/Login</b>
 				</a>
 				<%} else{%>
-				<a class="nav-item" href="/blogs/new">
+				<a class="nav-item" href="/blog/new">
 					<b>New Blog</b>
 				</a>
 				<a class="nav-item" href="/logout">
 					<b>Sign Out</b>
 				</a>
-				<a class="nav-item -end">
+				<a class="nav-item">
 					<b>Welcome <%=currentUser.username%></b>
 				</a>
 				<%}%>
-			</div>
+				</center>
 			</nav>
 		</div>
 		<!-- end of navigation links -->

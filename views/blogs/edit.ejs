@@ -1,15 +1,23 @@
 <%- include('../partials/header') %>
-<center><h3 class="title is-3" style="padding: 50px;">EDIT <%=blog.title%></h3></center>
-<form action="/blog/<%=blog._id%>?_method=PUT" method="POST" style="margin: auto; width: 40%; padding-bottom: 120px;">
-    <div class="field">
-        <input class="input is-info" type="text" name="blog[title]" value="<%=blog.title%>" required>
-    </div>
-    <div class="field">
-      <input class="input is-info" type="text" name="blog[image]" value="<%=blog.image%>">
-    </div>
-    <div class="field">
-      <textarea rows="20" class="textarea is-info" name="blog[body]"><%=blog.body%></textarea>
-    </div>
-    <button class="button is-info is-outlined">Edit</button>
+<center><h3 class="title is-3" style="padding: 50px;">Edit <%=blog.title%></h3></center>
+<form action="/blog/<%=blog._id%>?_method=PUT" method="POST" style="margin: auto; width: 40%;">
+  <div class="field">
+    <label class="label">Title:</label>
+    <input class="input is-info" type="text" name="title" value="<%=blog.title%>" required>
+  </div>
+  <div class="field">
+    <label class="label">Image URL:</label>
+    <input class="input is-info" type="text" name="image" value="<%=blog.image%>">
+  </div>
+  <div class="field">
+    <label class="label">Body (Supports Markdown):</label>
+    <textarea class="textarea is-info" name="body" rows="10"><%=blog.body%></textarea>
+  </div>
+  <span style="display: inline-flex;">
+    <button class="button is-info is-outlined" style="margin-right: 10px;">Edit</button>
+    <form action="/blog/<%=blog._id%>">
+      <button class="button is-warning is-outlined">Cancel</button>
+    </form>
+  </span>
 </form>
 <%- include('../partials/footer') %>
