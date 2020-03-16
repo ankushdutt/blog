@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<center><h3 class="title is-3" style="padding: 50px;">EDIT <%=blog.title%></h3></center>
+<form action="/blog/<%=blog._id%>?_method=PUT" method="POST" style="margin: auto; width: 40%;">
+    <div class="field">
+        <input class="input is-info" type="text" name="blog[title]" value="<%=blog.title%>" required>
+    </div>
+    <div class="field">
+      <input class="input is-info" type="text" name="blog[image]" value="<%=blog.image%>">
+    </div>
+    <div class="field">
+      <textarea class="textarea is-info" name="blog[body]"><%=blog.body%></textarea>
+    </div>
+    <button class="button is-primary is-outlined">Edit</button>
+</form>
+<%- include('../partials/footer') %>

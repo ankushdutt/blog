@@ -42,31 +42,30 @@ router.get("/blog/:id", function(req, res) {
     })
 })
 
-// //EDIT
-// router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req, res){
-//     Campground.findById(req.params.id, function(err, foundCampground){
-//         if(err){
-//             res.redirect("/campgrounds")
-//         } else{
-//             res.render("campgrounds/edit", {campground: foundCampground})
-//         }
-//     })
-// })
+//EDIT
+router.get("/blog/:id/edit", middleware.checkBlogOwnership, function(req, res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("/")
+        } else{
+            res.render("blogs/edit", {blog: foundBlog})
+        }
+    })
+})
 
-// //UPDATE
-// router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
-//     Campground.findByIdAndUpdate(req.params.id, req.body.cmp, function(err, updatedCmp){
-//         if(err){
-//             res.redirect("/campgrounds")
-//         } else{
-//             res.redirect("/campgrounds/" + req.params.id)
-//         }
-//     })
-// })
+//UPDATE
+router.put("/blog/:id", middleware.checkBlogOwnership, function(req, res){
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+        if(err){
+            res.redirect("/")
+        } else{
+            res.redirect("/blog/" + req.params.id)
+        }
+    })
+})
 
 //DELETE
 router.delete("/blog/:id", function(req, res){
-    console.log("routed to delte")
     Blog.findByIdAndRemove(req.params.id, function(err){
         if(err){
             console.log(err)

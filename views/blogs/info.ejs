@@ -3,15 +3,31 @@
 	<div class="container">
 		<div class="columns is-centered is-multiline has-text-centered">
 			<div class="column is-8">
-                <h3 class="title is-3"><b><a href="/blog/<%= %>" class="has-text-dark"><%=blog.title%></a></b></h3>
+				<h3 class="title is-3"><b><%=blog.title%></b></h3>
+				<hr>
+				<img src="<%=blog.image%>" alt="">
                 <h4 class="title is-4 is-spaced"><%=blog.body%></h4>
-                <h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <em><%=blog.author.username%></em> on April 7th 2017 at 9:33pm</h6>
-                <hr/>
+				<h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <em><%=blog.author.username%></em> on April 7th 2017 at 9:33pm</h6>
 			</div>
 		</div>
 	</div>
 </div>
-<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
-    <center><button class="button is-danger is-outlined">Delete</button></center>
-</form>
+	<center>
+		<hr width="66%">
+		<span style="display: inline-flex;">
+			<form action="/">
+				<button class="button is-primary" style="margin-right: 500px;">All Blogs</button>
+			</form>
+			<%if(currentUser && blog.author.id.equals(currentUser._id)) {%>
+				<form action="/blog/<%=blog._id%>/edit/">
+					<button class="button is-warning is-outlined" style="margin-right: 50px;">Edit</button>
+				</form>
+				<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+					<button class="button is-danger is-outlined">Delete</button>
+				</form>
+			<%}%>
+		</span>
+	</center>
+
+<hr/>
 <%- include('../partials/footer') %>
