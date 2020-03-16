@@ -5,7 +5,7 @@ var Comment     = require("../models/comment");
 var middleware  = require("../middleware")
 
 //POST
-router.post("/blog/:id/comment", function(req, res){
+router.post("/blog/:id/comment", middleware.isLoggedIn, function(req, res){
     console.log(req.params.id)
     Blog.findById(req.params.id, function(err, blog){
         if(err){
@@ -30,35 +30,16 @@ router.post("/blog/:id/comment", function(req, res){
     })
 })
 
-// //EDIT
-// router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
-//     Blog.findById(req.params.comment_id, function(err, foundComment){
-//         if(err){
-//             res.redirect("back")
-//         } else{
-//             res.render("comments/edit", {campgroundid: req.params.id, comment: foundComment})
-//         }
-//     })
-// })
-
-// //UPDATE
-// router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-//     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
-//         if(err){
-//             res.redirect("back")
-//         } else{
-//             res.redirect("/campgrounds/"+req.params.id)
-//         }
-//     })
-// })
-
 //DELETE
-router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
-    Blog.findByIdAndRemove(req.params.comment_id, function(err){
+router.delete("/blog/:id/comment/:comment_id", middleware.checkCommentOwnership, function(req, res){
+    console.log("hey")
+    Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if(err){
+            console.log("err: ", err)
             res.redirect("back")
         } else{
             // req.flash("success", "Comments Deleted!")
+            console.log("deleted successfully")
             res.redirect("/blog/"+req.params.id)
         }
     })

@@ -1,15 +1,20 @@
 <%- include('../partials/header') %>
-<center><h3 class="title is-3" style="padding: 50px;">Creat a New Blog</h3></center>
+<center><h3 class="title is-3" style="padding: 50px;">Create a New Blog</h3></center>
 <form action="/blogs" method="POST" style="margin: auto; width: 40%;">
     <div class="field">
-        <input class="input is-info" type="text" name="title" placeholder="Title" required>
+      <label class="label">Title:</label>
+      <input class="input is-info" type="text" name="title" placeholder="Title" required>
     </div>
     <div class="field">
+      <label class="label">Image URL:</label>
       <input class="input is-info" type="text" name="image" placeholder="Image URL">
     </div>
     <div class="field">
-      <textarea id="content" class="textarea is-info" name="body" rows="10" placeholder="Body (Markdown in Supported!)"></textarea>
+      <label class="label">Body (Supports Markdown):</label>
+      <textarea id="content" class="textarea is-info" name="body" rows="10" placeholder="Body"></textarea>
     </div>
-    <button class="button is-info is-outlined">Create</button>
+    <span style="display: inline-flex;">
+      <button class="button is-info is-outlined" style="margin-right: 10px;">Create</button>
+    </span>
 </form>
 <%- include('../partials/footer') %>

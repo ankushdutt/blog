@@ -37,7 +37,6 @@ router.get("/blog/:id", function(req, res) {
             console.log(err);
         }
         else{
-            console.log(foundBlog)
             res.render("blogs/info", {blog: foundBlog})
         }
     })

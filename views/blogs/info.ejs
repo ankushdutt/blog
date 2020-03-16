@@ -86,6 +86,11 @@
 		<div class="columns is-centered is-multiline">
 			<div class="column is-6">
 				<strong><%=comment.author.username%></strong> - <%=comment.text%>
+				<%if(currentUser && comment.author.id.equals(currentUser._id)) {%>
+					<form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" style="display: inline;">
+						<button id="remove-icon" class="fas fa-minus-circle"></button>
+					</form>
+				<%}%>
 			</div>
 		</div>
 	<%})%>
