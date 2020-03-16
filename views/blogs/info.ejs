@@ -2,31 +2,28 @@
 <div class="main-content">
 	<div class="container">
 		<div class="columns is-centered is-multiline has-text-centered">
-			<div class="column is-8">
+			<div class="column is-6">
 				<h3 class="title is-3"><b><%=blog.title%></b></h3>
+				<h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <b><%=blog.author.username%></b> on April 7th 2017 at 9:33pm</h6>
 				<hr>
-				<img src="<%=blog.image%>" alt="">
-                <h4 class="title is-4 is-spaced"><%=blog.body%></h4>
-				<h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <em><%=blog.author.username%></em> on April 7th 2017 at 9:33pm</h6>
+				<!-- <img src="<%=blog.image%>" alt=""> -->
+				<p style="text-align:justify"><%=blog.body%></p>
 			</div>
 		</div>
 	</div>
 </div>
 	<center>
-		<hr width="66%">
+		<%if(currentUser && blog.author.id.equals(currentUser._id)) {%>
+		<hr width="43%">
 		<span style="display: inline-flex;">
-			<form action="/">
-				<button class="button is-primary" style="margin-right: 500px;">All Blogs</button>
+			<form action="/blog/<%=blog._id%>/edit/">
+				<button class="button is-warning is-outlined" style="margin-right: 50px;">Edit</button>
 			</form>
-			<%if(currentUser && blog.author.id.equals(currentUser._id)) {%>
-				<form action="/blog/<%=blog._id%>/edit/">
-					<button class="button is-warning is-outlined" style="margin-right: 50px;">Edit</button>
-				</form>
-				<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
-					<button class="button is-danger is-outlined">Delete</button>
-				</form>
-			<%}%>
+			<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+				<button class="button is-danger is-outlined">Delete</button>
+			</form>
 		</span>
+		<%}%>
 	</center>
 
 <hr/>

@@ -1,92 +1,4 @@
 <%- include('partials/header') %>
-<div class="modal animated fadeIn" id="regmodal">
-    <div class="modal-background"></div>
-	<!-- ----------------------------------------
-	SIGN UP AND LOGIN FORM----------------
-	---------------------------------------- -->
-	<div class="modal-content" style="width: 30%;">
-		<form action="/register" method="POST">
-			<div class="card" style="padding-top: 20px; border-radius: 10px;">
-				<div class="card-content">
-				<!-- --EDIT CODE FOR SIGN UP/LOGIN FORM HERE--- -->
-					<div class="field">
-						<label class="label">Username</label>
-						<div class="control">
-						<input class="input" type="text" name="username" placeholder="Username">
-						</div>
-					</div>
-					
-					<div class="field">
-						<label class="label">Password</label>
-						<div class="control">
-						<input class="input" type="password" name="password" placeholder="Password">
-						</div>
-					</div>
-				</div>
-				<footer class="card-footer">
-				<p class="card-footer-item">
-					<button formaction="/login" class="button is-primary is-outlined btn-grad" style="width: 100%;">Login</button>
-				</p>
-				<p class="card-footer-item">
-					<button class="button is-primary is-outlined" style="width: 100%;">Sign Up</button>
-				</p>
-				</footer>
-			</div>
-		</form>
-	</div>
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
-
-<!-- -----------------------------------
-HOMEPAGE COPIED FROM GITHUB-------------
------------------------------------ --->
-<div class="header-wrapper">
-	<section class="hero-top">
-		<div class="header">
-			<!-- navigation links -->
-			<div class="header-nav">
-				<nav class="nav">
-					<div class="nav-center">
-						<a class="nav-item" href="/">
-							<b>Home</b>
-						</a>
-						<%if(!currentUser){%>
-							<a class="nav-item" id="regbutton">
-								<b>Sign-Up/Login</b>
-							</a>
-						<%} else{%>
-							<a class="nav-item" href="/blogs/new">
-								<b>New Blog</b>
-							</a>
-							<a class="nav-item" href="/logout">
-								<b>Sign Out</b>
-							</a>
-							<a class="nav-item -end">
-								<b>Welcome <%=currentUser.username%></b>
-							</a>
-						<%}%>
-					</div>
-				</nav>
-			</div>
-			<!-- end of navigation links -->
-			<!-- header titles -->
-			<div class="header-title">
-				<section class="hero is-medium has-text-centered">
-					<div class="hero-body">
-						<div class="container">
-							<h1 class="title is-1">Ankush Dutt</h1>
-							<h3 class="subtitle is-3">The Daily Awesome</h3>
-						</div>
-					</div>
-				</section>
-			</div>
-			<!-- end of header titles -->
-		</div>
-	</section>
-</div>
-<!-- end of header -->
-
-<!-- main body content -->
 <div class="main-content">
 	<div class="container">
 		<div class="columns is-centered is-multiline has-text-centered">
@@ -94,7 +6,7 @@ HOMEPAGE COPIED FROM GITHUB-------------
 				<% blogs.forEach(function(blog) { %>
 					<h3 class="title is-3"><b><a href="/blog/<%=blog._id %>" class="has-text-dark"><%=blog.title%></a></b></h3>
 					<!-- <h4 class="title is-4 is-spaced"><%=blog.body%></h4> -->
-					<h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <b><em><%=blog.author.username%></em></b> on April 7th 2017 at 9:33pm</h6>
+					<h6 class="subtitle is-6" style="padding-top: 10px;">Posted by <b><%=blog.author.username%></b> on April 7th 2017 at 9:33pm</h6>
 					<hr/>
 				<%})%>
 				<!-- pagingation -->
@@ -107,48 +19,4 @@ HOMEPAGE COPIED FROM GITHUB-------------
 		</div>
 	</div>
 </div>
-<!-- end of main content -->
-
-<!-- footer -->
-<div class="footer">
-	<div class="container">
-		<div class="has-text-centered">
-			<!-- nav icons -->
-			<div class="nav-center">
-				<a class="nav-item">
-				<span class="icon">
-					<i class="fa fa-twitter"></i>
-				</span>
-				</a>
-				<a class="nav-item">
-				<span class="icon">
-					<i class="fa fa-facebook"></i>
-				</span>
-				</a>
-				<a class="nav-item">
-				<span class="icon">
-					<i class="fa fa-github"></i>
-				</span>
-				</a>
-			</div>
-			<!-- end of nav icons -->
-		</div>
-	</div>
-</div>
-<!-- -----------------------------------
-JAVASCRIPT------------------------------
------------------------------------ --->
-<script>
-	var button = document.getElementById("regbutton")
-	var modal = document.getElementById("regmodal")
-	var closebtn = document.getElementsByClassName("modal-close")[0]
-
-	button.onclick = function() {
-		regmodal.classList.toggle("is-active")
-	}
-
-	closebtn.onclick = function(){
-		regmodal.classList.toggle("is-active")
-	}
-</script>
 <%- include('partials/footer') %>

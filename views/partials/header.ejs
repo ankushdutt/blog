@@ -11,3 +11,102 @@
     <!-- end of styles and fonts -->
   </head>
   <body>
+    <div class="header-wrapper">
+      <section class="hero-top">
+        <div class="header">
+          <!-- navigation links -->
+          <div class="header-nav">
+            <nav class="nav">
+              <div class="nav-center">
+                <a class="nav-item" href="/">
+                  <b>Home</b>
+                </a>
+                <%if(!currentUser){%>
+                  <a class="nav-item" id="regbutton">
+                    <b>Sign-Up/Login</b>
+                  </a>
+                <%} else{%>
+                  <a class="nav-item" href="/blogs/new">
+                    <b>New Blog</b>
+                  </a>
+                  <a class="nav-item" href="/logout">
+                    <b>Sign Out</b>
+                  </a>
+                  <a class="nav-item -end">
+                    <b>Welcome <%=currentUser.username%></b>
+                  </a>
+                <%}%>
+              </div>
+            </nav>
+          </div>
+          <!-- end of navigation links -->
+          <!-- header titles -->
+          <div class="header-title">
+            <section class="hero is-medium has-text-centered">
+              <div class="hero-body">
+                <div class="container">
+                  <h1 class="title is-1">Ankush Dutt</h1>
+                  <h3 class="subtitle is-3">The Daily Awesome</h3>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- end of header titles -->
+        </div>
+      </section>
+    </div>
+    <!-- ------------------------------------MODAL---- -->
+    <div class="modal animated fadeInDown" id="regmodal">
+      <div class="modal-background"></div>
+    <!-- ----------------------------------------
+    SIGN UP AND LOGIN FORM----------------
+    ---------------------------------------- -->
+    <div class="modal-content" style="width: 30%;">
+      <form action="/register" method="POST">
+        <div class="card" style="padding-top: 20px; border-radius: 10px;">
+          <div class="card-content">
+          <!-- --EDIT CODE FOR SIGN UP/LOGIN FORM HERE--- -->
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+              <input class="input" type="text" name="username" placeholder="Username">
+              </div>
+            </div>
+            
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+              <input class="input" type="password" name="password" placeholder="Password">
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+          <p class="card-footer-item">
+            <button formaction="/login" class="button is-primary is-outlined btn-grad" style="width: 100%;">Login</button>
+          </p>
+          <p class="card-footer-item">
+            <button class="button is-primary is-outlined" style="width: 100%;">Sign Up</button>
+          </p>
+          </footer>
+        </div>
+      </form>
+    </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+<!-- -----------------------------------
+JAVASCRIPT------------------------------
+----------------------------------- --->
+<script>
+	var button = document.getElementById("regbutton")
+	var modal = document.getElementById("regmodal")
+	var closebtn = document.getElementsByClassName("modal-close")[0]
+
+	button.onclick = function() {
+		regmodal.classList.toggle("is-active")
+	}
+
+	closebtn.onclick = function(){
+		regmodal.classList.toggle("is-active")
+	}
+</script>

@@ -1,7 +1,6 @@
-/* github.com/plasticneko */
-/* bulma css framework by jeremy thomas (github.com/jgthms | bulma.io) */
-
-/* input select  */
+body{
+    background: aliceblue;
+}
 .input:focus, .textarea:focus, input[type]:focus, .button:focus {
     border: 1px solid #4a4a4a;
     outline: none !important;
@@ -125,17 +124,17 @@ a.nav-item:hover, a.nav-item:active, a.nav-item:link, a.nav-item:visited {
     width: 2px;
   }
   
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #868; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: rgb(21, 18, 44); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
