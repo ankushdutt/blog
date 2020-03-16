@@ -11,7 +11,7 @@ var express     = require("express")
     marked      = require("marked")
 
 var indexRoutes = require("./routes/index")
-// var commentRoutes = require("./routes/comments")
+var commentRoutes = require("./routes/comments")
 var blogRoutes = require("./routes/blogs")
 
 mongoose.connect("mongodb://localhost/Blog_Website", {useNewUrlParser: true,  useUnifiedTopology: true}, function() {
@@ -45,7 +45,7 @@ app.use(function(req, res, next){
 })
 
 app.use(indexRoutes)
-// app.use("/campgrounds/:id/comments", commentRoutes)
+app.use(commentRoutes)
 app.use(blogRoutes)
 
 //-------------LISTEN ON PORT 5000--------------

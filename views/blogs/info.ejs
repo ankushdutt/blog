@@ -46,29 +46,48 @@
 </div>
 
 
-<div class="main-content">
-	<div class="container">
-		<div class="columns is-centered is-multiline has-text-centered">
-			<div class="column is-6">
-				<img src="<%=blog.image%>" alt="">
-				<p style="text-align:justify; padding-top: 20px;"><%-blog.body%></p>
-			</div>
+<div class="container">
+	<div class="columns is-centered is-multiline">
+		<div class="column is-6">
+			<img src="<%=blog.image%>" alt="">
+			<p style="padding-top: 15px;"><%-blog.body%></p>
 		</div>
 	</div>
 </div>
-	<center>
-		<%if(currentUser && blog.author.id.equals(currentUser._id)) {%>
-		<hr width="43%">
-		<span style="display: inline-flex;">
-			<form action="/blog/<%=blog._id%>/edit/">
-				<button class="button is-info is-outlined" style="margin-right: 50px;">Edit</button>
+<center>
+	<%if(currentUser && blog.author.id.equals(currentUser._id)) {%>
+	<hr width="43%">
+	<span style="display: inline-flex;">
+		<form action="/blog/<%=blog._id%>/edit/">
+			<button class="button is-info is-outlined" style="margin-right: 50px;">Edit</button>
+		</form>
+		<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+			<button class="button is-danger is-outlined">Delete</button>
+		</form>
+	</span>
+	<%}%>
+</center>
+<hr>
+<div class="container">
+<%if(currentUser){%>
+	<div class="columns is-centered is-multiline">
+		<div class="column is-6">
+			<form action="/blog/<%=blog._id%>/comment" method="POST">
+				<div class="field">
+					<label class="label">Write a comment:</label>
+					<input class="input is-success" type="text" name="comment" placeholder="Comment..." required>
+				</div>
+				<button class="button is-success is-outlined">Comment</button>
 			</form>
-			<form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
-				<button class="button is-danger is-outlined">Delete</button>
-			</form>
-		</span>
-		<%}%>
-	</center>
-
-<hr/>
+		</div>
+	</div>
+	<%}%>
+	<% blog.comments.forEach(function(comment){%>
+		<div class="columns is-centered is-multiline">
+			<div class="column is-6">
+				<strong><%=comment.author.username%></strong> - <%=comment.text%>
+			</div>
+		</div>
+	<%})%>
+</div>
 <%- include('../partials/footer') %>
