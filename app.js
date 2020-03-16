@@ -9,20 +9,20 @@ var express     = require("express")
     Comment     = require("./models/comment")
     User        = require("./models/user")
     marked      = require("marked")
+    keys        = require('./config')
 
 var indexRoutes = require("./routes/index")
 var commentRoutes = require("./routes/comments")
 var blogRoutes = require("./routes/blogs")
 
-mongoose.connect("mongodb://localhost/Blog_Website", {useNewUrlParser: true,  useUnifiedTopology: true}, function() {
+mongoose.connect(keys.mongoUrl, {useNewUrlParser: true,  useUnifiedTopology: true}, function() {
     console.log("MongoDB Connected")
 });
 
 app.set("view engine", "ejs")
 app.use(express.static(__dirname + "/public"))
-app.use(bodyParser.urlencoded({extended: true})) //used to support body parser which helps in transforming data from form to req.body 
+app.use(bodyParser.urlencoded({extended: true})) 
 app.use(mthdOveride("_method"))
-// app.use(flash())
 
 // ----PASSPORT CONFIG--------
 app.use(require("express-session")({
@@ -36,11 +36,10 @@ app.use(passport.session())
 passport.use(new LclStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
+
 // -----------------------------
 app.use(function(req, res, next){             
-    res.locals.currentUser = req.user // currentUser is variable to pass in EVERY routes! req.user stores information about the logged in user
-    // res.locals.error = req.flash("error")
-    // res.locals.success = req.flash("success")
+    res.locals.currentUser = req.user
     next()
 })
 
